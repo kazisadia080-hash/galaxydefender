@@ -1,21 +1,41 @@
 package com.galaxydefender.ui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import com.galaxydefender.adapter.KeyboardAdapter;
-import com.galaxydefender.bullets.*;
+import com.galaxydefender.bullets.Bullet;
+ import com.galaxydefender.bullets.EnemyBullet;
+ import com.galaxydefender.decorator.DoubleDamageDecorator;
+ import com.galaxydefender.decorator.RapidFireDecorator;
 import com.galaxydefender.decorator.ShieldDecorator;
-import com.galaxydefender.decorator.RapidFireDecorator;
-import com.galaxydefender.decorator.DoubleDamageDecorator;
-import com.galaxydefender.enemy.*;
-import com.galaxydefender.factorymethod.*;
-import com.galaxydefender.game.*;
+import com.galaxydefender.enemy.BossEnemy;
+import com.galaxydefender.enemy.Enemy;
+import com.galaxydefender.factorymethod.BossFactory;
+import com.galaxydefender.factorymethod.EnemyFactory;
+import com.galaxydefender.factorymethod.FighterFactory;
+import com.galaxydefender.factorymethod.HeavyFactory;
+import com.galaxydefender.factorymethod.ScoutFactory;
+import com.galaxydefender.game.CollisionManager;
+import com.galaxydefender.game.GameLoop;
+import com.galaxydefender.game.ScoreManager;
 import com.galaxydefender.player.Player;
-import com.galaxydefender.powerup.PowerUp;
 import com.galaxydefender.powerup.HealthPack;
+import com.galaxydefender.powerup.PowerUp;
 import com.galaxydefender.singleton.GameManager;
 import com.galaxydefender.util.Constants;
-import javax.swing.*; import java.awt.*; import java.awt.event.*; import java.util.*;
 
-/** The playable canvas: waves advance only after every enemy is defeated. */
 public final class GamePanel extends JPanel {
     private final JFrame frame; private final Player player=new Player(); private final ScoreManager score=new ScoreManager();
     private final java.util.List<Enemy> enemies=new ArrayList<>(); private final java.util.List<Bullet> shots=new ArrayList<>(); private final java.util.List<EnemyBullet> enemyShots=new ArrayList<>(); private final java.util.List<PowerUp> powerUps=new ArrayList<>();

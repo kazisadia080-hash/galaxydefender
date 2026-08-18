@@ -1,9 +1,11 @@
 package com.galaxydefender;
 
-import com.galaxydefender.ui.MainMenu;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
-/** Application entry point. */
+import com.galaxydefender.ui.MainMenu;
+
 public final class Main {
     private Main() { }
     public static void main(String[] args) {

@@ -1,3 +1,26 @@
 package com.galaxydefender.enemy;
-import com.galaxydefender.bullets.EnemyBullet; import java.awt.*; import java.util.*;
-public final class BossEnemy extends Enemy { public BossEnemy(double x,double y){super(x,y,300,200);dx=2.2;} public void update(){x+=dx;if(x<0||x>830)dx=-dx;cooldown++;} public Color color(){return new Color(238,58,80);} public Rectangle bounds(){return new Rectangle((int)x,(int)y,70,55);} public java.util.List<EnemyBullet> shoot(){if(cooldown%55!=0)return Collections.emptyList();return java.util.List.of(new EnemyBullet(x+12,y+55),new EnemyBullet(x+34,y+55),new EnemyBullet(x+56,y+55));} public boolean laserNow(){return cooldown%250==0;} }
+import java.awt.Color;
+import java.awt.Rectangle;
+import java.util.Collections;
+
+import com.galaxydefender.bullets.EnemyBullet;
+public final class BossEnemy extends Enemy { 
+    public BossEnemy(double x,double y){
+        super(x,y,300,200);dx=2.2;
+    } 
+    public void update(){
+        x+=dx;if(x<0||x>830)dx=-dx;cooldown++;
+    } 
+    public Color color(){
+        return new Color(238,58,80);
+    } 
+    public Rectangle bounds(){
+        return new Rectangle((int)x,(int)y,70,55);
+    } 
+    public java.util.List<EnemyBullet> shoot(){
+        if(cooldown%55!=0)
+            return Collections.emptyList();
+        return java.util.List.of(new EnemyBullet(x+12,y+55),new EnemyBullet(x+34,y+55),new EnemyBullet(x+56,y+55));
+    } public boolean laserNow(){
+        return cooldown%250==0;
+    } }
