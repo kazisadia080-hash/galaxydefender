@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.util.Collections;
 
 import com.galaxydefender.bullets.EnemyBullet;
-public abstract class Enemy implements Cloneable {
+public abstract class Enemy {
     protected double x,y,dx; 
     protected int health; 
     protected final int score; 
@@ -33,11 +33,5 @@ public abstract class Enemy implements Cloneable {
     public int score(){
         return score;
     }
-    public Enemy clone(){
-        try{
-            return (Enemy)super.clone();
-        }catch(CloneNotSupportedException e){
-            throw new AssertionError(e);
-        }
-    }
+    
 }
